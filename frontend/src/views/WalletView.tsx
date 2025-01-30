@@ -1,30 +1,12 @@
-import { useQuery } from "@tanstack/react-query"
+import { WalletStatus } from "../components/wallet/status"
 
 const WalletView = () => {
-	const { isPending, isFetching, data, error } = useQuery({
-		queryKey: ["gitQuery"],
-		queryFn: async () => {
-			const response = await fetch(
-				"https://api.github.com/repos/TanStack/query"
-			)
-
-			const data = await response.json()
-			return data
-		},
-	})
-
-	if (isPending) return "Loading..."
-	if (error) return "An error occured: " + error.message
-
 	return (
 		<>
 			<div className="mb-8">
-				<h1 className="text-4xl font-bold">Your Wallet Information</h1>
+				<h1 className="text-4xl font-bold mb-4">Your Wallet Information</h1>
+				<WalletStatus />
 			</div>
-			<h1>{data.full_name}</h1>
-			<p>{data.description}</p>
-			<strong>{data.forks_count}</strong>
-			<div>{isFetching ? "Updating" : ""}</div>
 		</>
 	)
 }
