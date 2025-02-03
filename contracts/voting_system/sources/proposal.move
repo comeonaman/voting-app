@@ -1,16 +1,4 @@
-/*
-/// Module: voting_system
-module voting_system::voting_system;
-        ^0x0             ^module name 
-*/
-
-// key is an ability 
-// owned object needs an address assigned 
-// shared object anyone on the blockchain can access
-// fields and functions use snake_case naming
-// structs use Pascal naming 
-
-module voting_system::dashboard;
+module voting_system::proposal;
 
 use std::string::String;
 
@@ -25,7 +13,7 @@ public struct Proposal has key {
     voter_registry: vector<address> //vector creates a list, <> specify list of what 
 }
 
-public fun create_proposal(
+public fun create(
     title: String, 
     description: String, 
     expiration: u64, 
@@ -44,3 +32,16 @@ public fun create_proposal(
 
     transfer::share_object(proposal)
 }
+
+
+/*
+/// Module: voting_system
+module voting_system::voting_system;
+        ^0x0             ^module name 
+*/
+
+// key is an ability 
+// owned object needs an address assigned 
+// shared object anyone on the blockchain can access
+// fields and functions use snake_case naming
+// structs use Pascal naming 
